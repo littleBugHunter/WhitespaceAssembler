@@ -1,13 +1,26 @@
 # WhitespaceAssembler
 A human readable assembler format and compiler for the whitespace programming language
 
+This Assembler was written at 1:00 in the morning as a proof of concept, because I was bored. It probably features bugs. Feel free to report them as issues.
+There are probably a bunch of better assemblers/compilers outputting whitespace out there, I'd highly reccomend looking around for them.
+
 Usage
 -----
 Compile the C# Project
 Run WhitespaceAssembler.exe with the input and output file destinations as Parameters
 
+Variables and Values
+--------------------
+Numbers can be input as simple decimal integers, #hexadecimal values (prefixed with #) or as 'A' Ascii characters (' ' is currently not supported, use Ascii code 32 instead.
+Variables have two prefixes depending on if you are talking about their Value or their Address. They do not need to be declared. \*variableName retrieves the value at the given variable (Like a Pointer dereference) &variableName gets the address of the Variable
+Labels are prefixed with a . and can be defined with the lbl command
+
 Instruction Set
 ---------------
+THe instructions are followed by any of the following symbols, describing the parameter type. (parameters in code are seperated by spaces or tabs)
+\# Means a Number Value or an Address (&variableName)
+\* Means a Variable Value (\*variableName)
+. Means a Label
 
 >Stack Maniupulation
 >===================
@@ -176,39 +189,50 @@ Instruction Set
 >============
 >
 >Lbl .
+>-----
 >Defines a Label as param0
 >
 >Call .
+>------
 >Calls the Label specified in Param0
 >
 >Jmp .
+>-----
 >Jumps to the Label specified in Param0
 >
 >Jpz .
+>-----
 >Jumps to the Label specified in Param0 if the value on top of the Stack is zero (This pops the top of the stack so call Dup before, if you want to keep the Value)
 >
 >Jpn .
+>-----
 >Jumps to the Label specified in Param0 if the value on top of the Stack is negative (This pops the top of the stack so call Dup before, if you want to keep the Value)
 >
 >Ret
+>----
 >Returns from a Call
 >
 >Exit
+>----
 >Stops the Program
 >
 >I/O
 >====
 >
 >Print_char
+>----------
 >Prints the character on top of the Stack to the Console
 >
 >Print_number
+>-----------
 >Prints the number on top of the Stack to the Console
 >
 >Read_char
+>---------
 >Reads a character from the Console and puts it on top of the Stack
 >
 >Read_number
+>-----------
 >Reads a number from the Console and puts it on top of the Stack
 
 
