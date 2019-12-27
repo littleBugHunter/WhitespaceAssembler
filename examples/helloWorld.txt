@@ -1,0 +1,29 @@
+jmp .start
+
+lbl .printText
+dup
+jpz .printTextDone
+print_char
+// pup dup
+jmp .printText
+lbl .printTextDone
+pop
+ret
+
+lbl .start
+push 0
+push 'o'
+push 'l'
+push 'l'
+push 'e'
+push 'H'
+call .printText
+push 0
+push 'd'
+push 'l'
+push 'r'
+push 'o'
+push 'W'
+push 32
+call .printText
+exit
